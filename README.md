@@ -8,11 +8,15 @@ Este projeto demonstra uma aplicação simples em Node.js rodando dentro de um c
 
 ### 1. Executando um Container com um Nome Personalizado
 
+Este comando cria e executa um container com o nome especificado.
+
 ```sh
 docker run --name mynginx nginx
 ```
 
 ### 2. Executando um Container em Modo Desanexado
+
+Este comando executa um container em segundo plano (modo desanexado).
 
 ```sh
 docker run -d --name mynginx nginx
@@ -20,11 +24,15 @@ docker run -d --name mynginx nginx
 
 ### 3. Mapeando Portas
 
+Este comando mapeia uma porta do host para uma porta do container.
+
 ```sh
 docker run -d -p 8080:80 nginx
 ```
 
 ### 4. Parando, Iniciando e Removendo Containers
+
+Estes comandos permitem listar, parar, iniciar e remover containers.
 
 - **Listar Containers em Execução:**
   ```sh
@@ -53,6 +61,8 @@ docker run -d -p 8080:80 nginx
 
 ### 5. Anexar e Desanexar
 
+Estes comandos permitem anexar a um container em execução e desanexar sem parar o container.
+
 - **Anexar a um Container em Execução:**
   ```sh
   docker attach mynginx
@@ -60,6 +70,8 @@ docker run -d -p 8080:80 nginx
 - **Desanexar sem Parar (CTRL + P, CTRL + Q):**
 
 ### 6. Executando Comandos e Removendo Containers Automaticamente
+
+Estes comandos permitem executar comandos em containers e remover containers automaticamente após a execução.
 
 - **Executar um Comando em um Novo Container:**
   ```sh
@@ -80,6 +92,8 @@ docker run -d -p 8080:80 nginx
 
 ### 7. Removendo Todos os Containers
 
+Estes comandos permitem remover todos os containers parados ou todos os containers, incluindo os em execução.
+
 - **Remover Todos os Containers Parados:**
   ```sh
   docker rm $(docker ps -a -q)
@@ -91,11 +105,15 @@ docker run -d -p 8080:80 nginx
 
 ### 8. Publicando Portas
 
+Este comando mapeia uma porta do host para uma porta do container.
+
 ```sh
 docker run -d -p 8080:80 nginx
 ```
 
 ### 9. Execução Interativa e Acesso ao Shell
+
+Estes comandos permitem acessar o shell de um container em execução.
 
 - **Acessar o Shell de um Container em Execução:**
   ```sh
@@ -103,6 +121,8 @@ docker run -d -p 8080:80 nginx
   ```
 
 ### 10. Gerenciando Volumes
+
+Estes comandos permitem criar, listar, inspecionar, remover e montar volumes em containers.
 
 - **Criar um Volume:**
   ```sh
@@ -127,6 +147,8 @@ docker run -d -p 8080:80 nginx
 
 ### 11. Backup e Restauração de Volumes
 
+Estes comandos permitem fazer backup e restauração de volumes.
+
 - **Backup de um Volume:**
   ```sh
   docker run --rm -v my_volume:/data -v $(pwd):/backup busybox tar czf /backup/backup.tar.gz /data
@@ -137,6 +159,8 @@ docker run -d -p 8080:80 nginx
   ```
 
 ### 12. Gerenciamento de Imagens
+
+Estes comandos permitem listar, remover e inspecionar imagens locais.
 
 - **Listar Imagens Locais:**
   ```sh
@@ -153,6 +177,8 @@ docker run -d -p 8080:80 nginx
 
 ### 13. Trabalhando com Registries
 
+Estes comandos permitem buscar e fazer pull de imagens de registries.
+
 - **Buscar uma Imagem:**
   ```sh
   docker search ubuntu
@@ -164,6 +190,8 @@ docker run -d -p 8080:80 nginx
 
 ### 14. Limpeza
 
+Estes comandos permitem remover imagens dangling e todas as imagens não utilizadas.
+
 - **Remover Imagens Dangling:**
   ```sh
   docker image prune
@@ -174,6 +202,8 @@ docker run -d -p 8080:80 nginx
   ```
 
 ### 15. Docker Hub
+
+Este comando permite enviar uma imagem para o Docker Hub.
 
 - **Enviar uma Imagem para o Docker Hub:**
   ```sh
