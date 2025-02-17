@@ -180,6 +180,22 @@ docker run -d -p 8080:80 nginx
   docker push username/repository:tag
   ```
 
+## Explicação do Dockerfile
+
+Vamos detalhar cada linha do nosso Dockerfile para entender melhor o que está acontecendo:
+
+- `ARG NODE_VERSION=22.2.0`: Definimos uma variável de build chamada `NODE_VERSION` com o valor `22.2.0`. Isso nos permite alterar a versão do Node.js facilmente.
+- `FROM node:${NODE_VERSION}`: Usamos a imagem base do Node.js na versão especificada pela variável `NODE_VERSION`. Isso garante que estamos usando a versão correta do Node.js.
+- `RUN apt-get update && apt-get install -y vim && rm -rf /var/lib/apt/lists/*`: Atualizamos a lista de pacotes e instalamos o editor de texto `vim`. Após a instalação, removemos os arquivos de lista de pacotes para economizar espaço.
+- `WORKDIR /app`: Definimos o diretório de trabalho dentro do container como `/app`. Todos os comandos subsequentes serão executados a partir deste diretório.
+- `COPY package*.json ./`: Copiamos os arquivos `package.json` e `package-lock.json` para o diretório de trabalho no container. Isso é necessário para instalar as dependências do projeto.
+- `RUN npm install`: Instalamos as dependências do projeto listadas no `package.json`.
+- `COPY . .`: Copiamos todos os arquivos do diretório atual para o diretório de trabalho no container. Isso inclui o código-fonte da aplicação.
+- `RUN useradd -m mynode`: Criamos um novo usuário chamado `mynode`. Isso é uma boa prática de segurança para não executar a aplicação como root.
+- `USER mynode`: Definimos o usuário `mynode` como o usuário padrão para executar comandos no container.
+- `HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 CMD [ "curl", "-f", "http://localhost:3000" ]`: Definimos um health check para o container, verificando a URL `http://localhost:3000` a cada 10 segundos. Isso ajuda a garantir que a aplicação está rodando corretamente.
+- `CMD ["node", "index.js"]`: Definimos o comando padrão para iniciar a aplicação Node.js. Quando o container é iniciado, este comando é executado.
+
 ## Conclusão
 
 Esta documentação fornece um guia abrangente para gerenciar containers e imagens Docker. Para informações mais detalhadas, consulte a documentação oficial do Docker.
